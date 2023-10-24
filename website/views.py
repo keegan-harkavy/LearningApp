@@ -3,8 +3,35 @@ from flask_login import login_required, current_user
 from .models import Note
 from . import db
 import json
+import pyttsx3
 
 views = Blueprint('views', __name__)
+
+def text_to_speech(text, gender):
+    """
+    Function to convert text to speech
+    :param text: text
+    :param gender: gender
+    :return: None
+    """
+    voice_dict = {'Male': 0, 'Female': 1}
+    code = voice_dict[gender]
+
+    engine = pyttsx3.init()
+
+    # Setting up voice rate
+    engine.setProperty('rate', 125)
+
+    # Setting up volume level  between 0 and 1
+    engine.setProperty('volume', 0.8)
+
+    # Change voices: 0 for male and 1 for female
+    voices = engine.getProperty('voices')
+    engine.setProperty('voice', voices[code].id)
+
+    engine.say(text)
+    engine.runAndWait()
+
 
 
 @views.route('/', methods=['GET', 'POST'])
@@ -26,7 +53,15 @@ def home():
 @views.route('/demo', methods=['GET', 'POST'])
 @login_required
 def demo():
-    return render_template("demo.html", user=current_user)
+    #adds text to speech 
+    if request.method == 'POST':
+        text = "Meet George, George is a 2nd grader struggling with how to pronounce certain words. Help George learn to read by selecting the characters that correspond to each part of the word.  If you can't remember who a certain character represents, ask George; he is sure to know them all."
+        text_to_speech(text, 'Male')
+        
+    else:
+        return render_template("demo.html", user=current_user)
+
+
 
 
 @views.route('/delete-note', methods=['POST'])

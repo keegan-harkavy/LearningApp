@@ -38,7 +38,8 @@ This all works and may be useful but does it have enough peer tutoring and GAI??
 
 
 
-
+- first level would be finding all the sounds 
+- 
 
 What we could do instead:
     Create a peer tutoring app: (This is basically what I said above)

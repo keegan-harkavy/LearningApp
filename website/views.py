@@ -119,14 +119,14 @@ def intro_flow_1():
 @views.route('/intro_audio_1', methods=['POST'])
 @login_required
 def intro_audio_1():
-    playsound("/Users/keeganharkavy/Desktop/Code/LearningApp/website/static/0.mp3")
+    playsound("website/static/0.mp3")
     return render_template("intro_flow_1.html", user=current_user)
 
 #plays second audio clip, same caveat 
 @views.route('/audio_2', methods=['POST'])
 @login_required
 def audio_2():
-    playsound("/Users/keeganharkavy/Desktop/Code/LearningApp/website/static/1.mp3")
+    playsound("website/static/1.mp3")
     return render_template("intro_flow_2.html", user=current_user)
 
 #plays third audio clip, same caveat
@@ -146,9 +146,9 @@ def audio_3():
         input="You're ready to start learning with George! He is so excited to learn more about" +user.franchise+"! The next screen will help teach you letters using characters from " + user.franchise + "."
         )
         #saves audio 
-        response1.stream_to_file("/Users/keeganharkavy/Desktop/Code/LearningApp/website/static/3.mp3")
+        response1.stream_to_file("website/static/3.mp3")
     #plays audio 
-    playsound("/Users/keeganharkavy/Desktop/Code/LearningApp/website/static/3.mp3")
+    playsound("website/static/3.mp3")
     return render_template("intro_flow_3.html", user=current_user)
 
 #second screen of intro flow, asks for franchise name
@@ -190,7 +190,7 @@ def intro_flow_3():
     yourStory = franchise  # Hard Coded Currently (Needs to be dynamic)
 
     #Checks to see if image already exists, if it exists does not regenerate 
-    if not os.path.exists("/Users/keeganharkavy/Desktop/Code/LearningApp/website/static/"+str(current_user.id)+"_logo.png"):
+    if not os.path.exists("website/static/"+str(current_user.id)+"_logo.png"):
         #included for testing 
         print(yourStory)
         #generates logo

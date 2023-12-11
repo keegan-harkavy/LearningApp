@@ -171,6 +171,18 @@
                         audio.currentTime = 0;
                     }
                 }
+
+  function toggleAudio2() {
+                    // Check if audio is currently playing
+                    if (audio2.paused) {
+                        // If paused, play the audio
+                        audio2.play();
+                    } else {
+                        // If playing, pause and reset to the beginning
+                        audio2.pause();
+                        audio2.currentTime = 0;
+                    }
+                }
 </script>
 {% endblock %}
   </body>

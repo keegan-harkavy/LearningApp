@@ -57,9 +57,8 @@
             <!-- Introduction text -->
             <p></p>
             <p class='text'>
-                Now it's time to teach George! To begin, George will ask how to pronounce a sound, and it is up to you to pick the 
-                image that corresponds to that sound. 
-                <button class="microphone-button" type="submit" onclick="toggleAudio()">
+                Now it's time to teach George! </p><p>To begin, George will ask how to pronounce a sound, and it is up to you to pick the 
+                image that corresponds to that sound. <button class="microphone-button" type="submit" onclick="toggleAudio()">
                     <i class="fas fa-microphone"></i> <!-- Font Awesome volume button icon -->
                 </button>  
             </p>
@@ -161,7 +160,7 @@
     
             function updateScore() {
                 document.getElementById('score').textContent = 'Score: ' + score + ' / ' + totalAttempts;
-                if (score === 1) {
+                if (score === 5) {
                     document.getElementById('goToNewPageButton').style.display = 'block';
                 }
             }

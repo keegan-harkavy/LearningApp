@@ -65,6 +65,17 @@
     </style>
 </head>
 <body>
+            <div>
+            <!-- Introduction text -->
+            <p></p>
+            <p class='text'>
+                You've made it all the way to Game 3! Congrats! </p><p>
+                In this game, you will be spelling the word Ship with the sounds you have learned. George will say a sound and you will tell him if it is the next sound in the word ship!
+  
+            <button class="microphone-button" type="submit" onclick="toggleAudio2()">
+                <i class="fas fa-microphone"></i> <!-- Font Awesome volume button icon -->
+            </button>  </p>
+        </div>
 
 <p></p>
 
@@ -113,6 +124,7 @@
 
 <script>
     var audio = new Audio("{{ url_for('static', filename='/sounds/8_sound.mp3') }}");
+    var audio2 = new Audio("{{ url_for('static', filename='/sounds/10_sound.mp3') }}");
 
     document.addEventListener('DOMContentLoaded', function () {
         const images = document.querySelectorAll('.image-grid .image');
@@ -165,10 +177,14 @@
                     updatePromptPosition();
                     shuffleImages();
                 } else {
-                    // If all sounds are matched, show a celebration
-                    alert('Congratulations! You matched all sounds!');
-                    resetGame();
-                }
+    updatePromptPosition();
+    // Add a delay of 1000 milliseconds (1 second) before showing the alert
+    setTimeout(function () {
+        // If all sounds are matched, show a celebration
+        alert('Congratulations! You matched all sounds!');
+        resetGame();
+    }, 1000);
+}
             } else {
                 alert('Incorrect image selected. Please try again!');
                 shuffleImages();
